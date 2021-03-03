@@ -118,7 +118,7 @@
             },
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]",
-                "Microsoft.CustomScriptExtension-20171218113724"
+                "[concat(variables('virtualMachineName'),'/', 'InstallAgentsandFireFox')]"
             ]
         },
         {
