@@ -88,7 +88,7 @@
                     "fileUris": [
                     "https://raw.githubusercontent.com/Microsoft/almvm/master/labs/vstsextend/selenium/armtemplate/chrome_%20firefox_VSTSagent_IIS.ps1"
                     ],
-                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File 'chrome firefox_VSTSagent_IIS.ps1'"
+                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File chrome_%20firefox_VSTSagent_IIS.ps1"
                 }
             }
         },
