@@ -74,8 +74,8 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2019-12-01",
-            "name": "[concat(variables('vmName'),'/', 'InstallAgentsandFireFox')]",
-            "location": "[parameters('location')]",
+            "name": "[concat(variables('virtualMachineName'),'/', 'InstallAgentsandFireFox')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/',variables('virtualMachineName'))]"
             ],
