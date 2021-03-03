@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachineName": {
@@ -72,29 +72,25 @@
             ]
         },
         {
-            "type": "Microsoft.Resources/deployments",
-            "name": "Microsoft.CustomScriptExtension-20171218113724",
-            "apiVersion": "2015-01-01",
-            "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.CustomScriptExtension-arm.2.0.50/Artifacts/MainTemplate.json"
-                },
-                "parameters": {
-                    "vmName": {
-                        "value": "[parameters('virtualMachineName')]"
-                    },
-                    "location": {
-                        "value": "[resourceGroup().location]"
-                    },
-                    "fileUris": {
-                        "value": "https://raw.githubusercontent.com/Microsoft/almvm/master/labs/vstsextend/selenium/armtemplate/chrome_%20firefox_VSTSagent_IIS.ps1"
-                    }
-                }
-            },
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2019-12-01",
+            "name": "[concat(variables('vmName'),'/', 'InstallAgentsandFireFox')]",
+            "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
-            ]
+            "[concat('Microsoft.Compute/virtualMachines/',variables('virtualMachineName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.7",
+                "autoUpgradeMinorVersion":true,
+                "settings": {
+                    "fileUris": [
+                    "https://raw.githubusercontent.com/Microsoft/almvm/master/labs/vstsextend/selenium/armtemplate/chrome_%20firefox_VSTSagent_IIS.ps1"
+                    ],
+                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File 'chrome firefox_VSTSagent_IIS.ps1'"
+                }
+            }
         },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
