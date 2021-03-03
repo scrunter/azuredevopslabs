@@ -118,7 +118,7 @@
             },
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]",
-                "[concat(variables('virtualMachineName'),'/', 'InstallAgentsandFireFox')]"
+                "[concat(parameters('virtualMachineName'),'/', 'InstallAgentsandFireFox')]"
             ]
         },
         {
