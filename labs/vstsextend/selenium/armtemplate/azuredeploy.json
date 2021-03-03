@@ -117,8 +117,7 @@
                 }
             },
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]",
-                "[concat('Microsoft.Compute/virtualMachines/extensions', parameters('virtualMachineName'),'/InstallAgentsandFireFox')]"
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
             ]
         },
         {
